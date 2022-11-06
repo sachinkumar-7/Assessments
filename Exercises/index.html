@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <style>
+        .avatar {
+            border-radius: 50%;
+        }
+    </style>
+
+</head>
+
+<body class="container">
+    <br>
+    <header>
+        <input type="search" class="form-control" placeholder="Search" onkeyup="searchData(event)">
+        <br>
+        <button onclick=" getData()" class="btn btn-primary">Get Data</button>
+    </header>
+    <table class="table table-striped">
+        <thead id="thead">
+            <tr>
+                <th>Avatar</th>
+                <th>id</th>
+                <th>first name</th>
+                <th>last name</th>
+                <th>email</th>
+            </tr>
+        </thead>
+    </table>
+
+    <script>
+        var usersData = null;
+        var thead = document.getElementById("thead")
+
+        function getData() {
+            fetch("https://reqres.in/api/users?page=2")
+                //  fetch("https://636292ee37f2167d6f67ff39.mockapi.io/myApi")
+                .then(response => response.json())
+                .then(jsonData => {
+                    console.log("The original String : ", jsonData);
+                    console.log(jsonData);
+                    
+                    usersData = jsonData;
+                    thead.innerHTML += row;
+                    jsonData.data.forEach(user => {
+
+                        var row = `
+                    <tr>
+                        
+                        <td><img src="${user.avatar}" class="avatar"></td>
+                        <td>${user.id}</td>
+                        <td>${user.first_name}</td>
+                        <td>${user.last_name}</td>
+                        <td>${user.email}</td>
+                     </tr>
+                `
+                        var thead = document.getElementById('thead');
+                        thead.innerHTML += row;
+                    });
+
+                })
+        }
+        function searchData(e){
+            var search = e.target.value;
+            thead.innerHTML = "";
+
+            if (search == ""){
+                usersData.data.forEach(function(user){
+                    createRow(user);
+                });
+                return;
+            }
+
+            users.forEach(user=>{
+                if(user.id == e.target.value){
+                    tbody.innerHTML = "";
+                    createRow(user)
+                }
+            })
+        }
+        function createRow(user){
+            var row = `
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.name}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                </tr>`;
+                tbody.innerHTML += row;
+        }
+
+
+
+        // <td>${user.email}</td> 
+    </script>
+
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>

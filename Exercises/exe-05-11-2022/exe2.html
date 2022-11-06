@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+      <style>
+        #sqr1{
+            position:absolute;
+            width: 200px;
+            height:200px;
+            background-color:red;
+            /* z-index: 0; */
+
+        }
+        #sqr2{
+            position: absolute;
+            width: 200px;
+            height:200px;
+            background-color:rgb(10, 114, 142);
+            left: 100px;
+            top: 100px;
+            /* z-index: 0; */
+        }
+
+
+      </style>
+
+</head>
+
+<body>
+    <header>
+        <!-- place navbar here -->
+    </header>
+    <main>
+        <div style="margin: 30px;">
+            <div id="sqr1" onclick="clicked1();"></div>
+            <div id="sqr2" onclick="clicked2();"></div>
+        </div>
+
+    </main>
+    <footer>
+        <!-- place footer here -->
+    </footer>
+    <script>
+
+        function clicked1(){
+            document.getElementById('sqr1').style.zIndex=1;
+            document.getElementById('sqr2').style.zIndex=0;
+        }
+        function clicked2(){
+            document.getElementById('sqr1').style.zIndex=0;
+            document.getElementById('sqr2').style.zIndex=1;
+        }
+
+            
+
+
+
+
+
+
+    </script>
+
+
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
